@@ -1,5 +1,5 @@
 # egalitarian
-Code and data for Hooper, Kaplan & Jaeggi 2021 Gains to cooperation drive the evolution of egalitarianism. Nature Human Behaviour.
+Code and data for the article Hooper, Kaplan & Jaeggi (2021) Gains to cooperation drive the evolution of egalitarianism. *Nature Human Behaviour*. https://doi.org/10.1038/s41562-021-01059-y
 
 File descriptions:
 
