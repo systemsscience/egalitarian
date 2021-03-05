@@ -10,7 +10,7 @@ II. Simulation - Fig 3 - Comparative statics.R - Code to reproduce the analysis 
 III. LRB.csv - Binford's hunter-gatherer data. Citations: L.F. Binford (2001) Constructive Frames of Reference. University of California Press and 
 B. Marwick, A. Johnson, D. White & E.A. Eff (2016) Binford's Hunter-Gatherer Data. Available from http://github.com/benmarwick/binford
 
-IV. Binford model 10 Feb 21.r - Code to reproduce the empirical analysis presented in Table 3 and Figure 4 using the LRB.csv dataset.
+IV. Binford model 10 Feb 21.r - Code to reproduce the empirical analysis of the Binford hunter-gatherer data presented in Table 3 and Figure 4.
 
 V. Simulation - Fig 5 - Critical number of acquiescent.R - Code to reproduce the the left-hand panel of Figure 5. 
 
