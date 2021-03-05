@@ -11,9 +11,6 @@
 library(gtools)
 library(plyr)
 
-# Set working directory
-setwd("~/Documents/R/egalitarianism")
-
 # Define parameters -----------------------------------------------------------------
 
 # Hawk-Dove and Prisoner's Dilemma parameters
