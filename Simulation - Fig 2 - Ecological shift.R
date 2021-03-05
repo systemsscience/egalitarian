@@ -11,9 +11,6 @@
 library(gtools)
 library(plyr)
 
-# Set working directory
-setwd("~/Documents/R/egalitarian")
-
 # Define parameters -----------------------------------------------------------------
 
 # Define Hawk-Dove and Prisoner's Dilemma parameters BEFORE and AFTER the parameter shift
@@ -59,7 +56,6 @@ S # This filtering will leave 14 unique strategies (rows)
 
 # Create matrices to store the frequencies of strategies and behavior through tim
 HistoryOfFrequencies <- matrix(nrow=epoch*2,ncol=dim(S)[1])
-
 
 #------------------------------------------------------------------------------------
 # Complete one run for this parameter combination -----------------------------------
@@ -396,7 +392,6 @@ for(iteration in 1:epoch) {
 	}
 }	
 		
-
 ################
 ################
 
