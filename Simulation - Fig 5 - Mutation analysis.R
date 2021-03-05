@@ -11,9 +11,6 @@
 library(gtools)
 library(plyr)
 
-# Set working directory
-setwd("~/Documents/R/egalitarianism")
-
 # Define parameters -----------------------------------------------------------------
 
 # Hawk-Dove and Prisoner's Dilemma parameters
@@ -25,7 +22,6 @@ w <- 0.9
 
 # Evolutionary parameters
 startingfractionHawkDefect <- 1
-#mutationprobabilities <- c(0.00000001,0.0000001,0.000001,0.000001,0.000003,0.000006,0.00001,0.0001,0.001,0.01)
 mutationprobabilities <- exp(seq(log(0.00000001),log(0.01),length.out=50))
 
 BaselineFitness <- 10
@@ -459,15 +455,7 @@ results <- ddply(temporarytable,c("v","d","c","w","b","mutationprobability"),sum
 ###################################
 ###################################
 
-# Create a 2-panel figure ##################
-
-#dev.new(width=8.5, height=3.75)
-#par(mar=c(5,4,3,1))
-#par(oma=c(0,0,0,0))
-#par(mfrow=c(1,2))
-
 result <- results
-result1 <- result
 
 plot(c(min(mutationprobabilities),max(mutationprobabilities)),c(0,1),col="white",xlab=expression(italic("m")),ylab="frequency",yaxt='n',xaxt='n',log="x")
 points(result$mutationprobability, 1-result$FractionDove,type="l",col="blue",lwd=3)
