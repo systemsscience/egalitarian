@@ -11,9 +11,6 @@
 library(gtools)
 library(plyr)
 
-# Set working directory
-setwd("~/Desktop/egalitarianism")
-
 # Define parameters -----------------------------------------------------------------
 
 # Hawk-Dove and Prisoner's Dilemma parameters
@@ -74,11 +71,10 @@ dval <- matrix(nrow=totalruns,ncol=1)
 cval <- matrix(nrow=totalruns,ncol=1)
 wval <- matrix(nrow=totalruns,ncol=1)
 sacq <- matrix(nrow=totalruns,ncol=1)
+
 #------------------------------------------------------------------------------------
 # Complete one or more runs for each parameter combination --------------------------
 #------------------------------------------------------------------------------------
-
-
 
 for (i in 1:length(startingfractionAcquiescent)) {
 	SFA <- startingfractionAcquiescent[i]
@@ -376,12 +372,6 @@ for (i in 1:length(startingfractionAcquiescent)) {
 		Frequencies <- rep(NA,dim(S)[1])
 		
 		# We need a consistent conservative set of strategy frequencies - 100% hawkish defectors
-		#antisocial <- which(S$DOVE==0 & S$COOPERATOR==0 & S$COMPLYTOCONDITIONALDOVE==0 & S$COMPLYTOLEVELLER==0 & S$COMPLYTOCONDITIONALCOOPERATOR==0)						
-		#Frequencies[antisocial] <- startingfractionHawkDefect / length(antisocial)
-		#Frequencies[-antisocial] <- (1-startingfractionHawkDefect) / (dim(S)[1]-length(antisocial))
-		#Frequencies <- Frequencies / sum(Frequencies) # Renormalize in case they don't add to 1
-		
-		# this is new *
 		Frequencies[S$DOVE==0 & S$COOPERATOR==1 & S$CONDITIONALCOOPERATOR ==1 & S$COMPLYTOLEVELLER==0 ] <- (1-SFA) * startingfractionHawkDefect
 		Frequencies[S$DOVE==0 & S$COOPERATOR==1 & S$CONDITIONALCOOPERATOR ==1 & S$COMPLYTOLEVELLER==1 ] <- (SFA) * startingfractionHawkDefect
 		wh <- which(is.na(Frequencies))
@@ -457,6 +447,7 @@ temporarytable <- data.frame(rval,dval,cval,wval,bval,sacq,FractionDove, Fractio
 names(temporarytable) <- c("v","d","c","w","b","sacq","FractionDove","FractionCooperator","FractionLeveller","FractionConditionalCooperator","FractionConditionalDove","FractionComplyToLeveller","FractionComplyToConditionalCooperator","FractionComplyToConditionalDove")
 results <- ddply(temporarytable,c("v","d","c","w","b","sacq"),summarise,FractionDove=mean(FractionDove),FractionCooperator=mean(FractionCooperator),FractionLeveller=mean(FractionLeveller),FractionConditionalCooperator=mean(FractionConditionalCooperator),FractionConditionalDove=mean(FractionConditionalDove),FractionComplyToLeveller=mean(FractionComplyToLeveller),FractionComplyToConditionalCooperator=mean(FractionComplyToConditionalCooperator),FractionComplyToConditionalDove=mean(FractionComplyToConditionalDove))
 table(results$sacq)
+
 ###################################
 ###################################
 ###################################
@@ -464,14 +455,9 @@ table(results$sacq)
 ###################################
 ###################################
 
-result2 <- results
 result <- results
-# Create a figure ##################
 
-#dev.new(width=8.5, height=3.75)
-#par(mar=c(5,4,3,1))
-#par(oma=c(0,0,0,0))
-#par(mfrow=c(1,2))
+# Create a figure ##################
 
 plot(c(0,1),c(0,1),col="white",xlab="Initial frequency of Acquiescent Hawks",ylab="frequency",yaxt='n',xaxt='n')
 points(result$sacq, 1-result$FractionDove,type="l",col="blue",lwd=3)
